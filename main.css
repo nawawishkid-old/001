@@ -1,0 +1,206 @@
+#wrapper {
+  width: 300px;
+  height: 300px;
+}
+
+#simulator {
+  height: 100%;
+  box-sizing: border-box;
+  font-size: 1px;
+}
+
+/* This size is divided by 4 from the original size */
+.canvas {
+  height: 100%;
+  /*padding: 20px 10px;*/
+  border: 1px solid;
+  overflow: hidden;
+}
+.canvas .sheet {
+  height: 100%;
+  display: none;
+  position: relative;
+}
+.canvas .sheet._active {
+  display: block;
+}
+.sheet .ground {
+  width: 400%;
+  height: 400%;
+  position: absolute;
+  top: -100%;
+  left: -100%;
+  background-color: #ccc;
+  background: linear-gradient(
+    to bottom,
+    #5d9634,
+    #5d9634 50%,
+    #538c2b 50%,
+    #538c2b
+  );
+  background-size: 100% 100px;
+}
+.bay {
+  width: 120px;
+  height: 60px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  font-size: 20px;
+  letter-spacing: 10px;
+  background-color: #91ff95;
+}
+.car {
+  position: absolute;
+  z-index: 1;
+  opacity: .5;
+  cursor: pointer;
+}
+.car._active {
+  opacity: 1;
+}
+.car:hover {
+  color: pink;
+}
+.car:hover .wheel-front > *,
+.car:hover .wheel-rear > * {
+  background-color: pink;
+}
+.body {
+  position: relative;
+  border: 1em solid;
+  border-radius: 10px;
+}
+.wheel-front,
+.wheel-rear {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  position: absolute;
+}
+.wheel-shaft {
+  height: 1em;
+  background-color: black;
+  position: absolute;
+  top: calc(50% - 1px);
+  left: 0;
+}
+.wheel-left,
+.wheel-right {
+  position: absolute;
+  background-color: black;
+  border-radius: 5px;
+}
+.wheel-right {
+  right: 0;
+}
+
+
+/**
+ * Turning graphic
+ */
+/* Lines */
+.line {
+  max-width: 0;
+  height: 1px;
+  position: absolute;
+  top: calc(50% - 0.5px);
+  background-color: blue;
+  opacity: .5;
+}
+.line._active,
+.line._active {
+  max-width: initial;
+}
+.line.rear.left,
+.line.front.left {
+  right: 50%;
+}
+.line.rear.right,
+.line.front.right {
+  left: 50%;
+}
+.line.outer.left {
+  right: initial;
+  left: 50%;
+}
+.line.outer.right {
+  left: initial;
+  right: 50%;
+}
+
+/* Circles */
+.circle {
+  max-width: 0;
+  max-height: 0;
+  opacity: 0;
+  position: absolute;
+  border: 1px solid red;
+  border-radius: 50%;
+}
+.circle._active {
+  max-width: initial;
+  max-height: initial;
+  opacity: .5;
+}
+.circle.to-left {
+  right: calc(100% - 3.125px);
+}
+.circle.to-right {
+  left: calc(100% - 3.125px);
+}
+
+/* Radius text */
+.radius-text {
+  position: absolute;
+}
+.radius-text.left {
+  right: calc(100% + 10px);
+}
+.radius-text.right {
+  left: calc(100% + 10px);
+}
+
+
+
+
+/**
+ * Controller
+ */
+.controller {
+  height: 20%;
+}
+.controller .nav {
+  margin-top: 10px;
+  border-top: 1px solid;
+  border-bottom: 1px solid;
+}
+.controller .nav ul {
+  margin: 0;
+  padding-left: 0;
+  list-style: none;
+  font-size: 14px;
+}
+.controller .nav ul li {
+  display: inline-block;
+  padding: 5px 10px;
+  opacity: .5;
+  cursor: pointer;
+}
+.controller .nav ul li._active {
+  opacity: 1;
+}
+
+.controller .panel {
+  display: none;
+  padding: 10px;
+}
+.controller .panel._active {
+  display: block;
+}
+.controller .panel input {
+  font-size: 12px;
+}
+
+
